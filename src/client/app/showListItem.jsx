@@ -15,12 +15,17 @@ let ShowListItem = React.createClass({
     });
     let checkedClass = classNames({
       'checked-button': !this.props.item.completed,
+      'checked-button-active': !this.props.item.completed && !this.props.resultsShown,
       'white-color': this.props.item.completed
     });
     return (
       <li className={liClass}>
-        {this.props.item.item}
-        <span className={checkedClass} onClick={this.completeItem}>&#x2713;</span>
+        <span className='thin'>{this.props.item.item}</span>
+        <span id={`check${this.props.item.id}`}
+              className={checkedClass}
+              onClick={!this.props.item.completed && !this.props.resultsShown && this.completeItem}>
+          &#x2713;
+        </span>
       </li>
     );
   }

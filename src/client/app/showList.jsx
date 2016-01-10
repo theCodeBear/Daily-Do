@@ -4,13 +4,18 @@ import React from 'react';
 import ShowListItem from './showListItem.jsx';
 
 let ShowList = React.createClass({
+  getInitialState() {
+    return { resultsShown: false }
+  },
+
   displayResults() {
     document.getElementById('done-button').classList.add('hide');
     document.getElementById('results').classList.remove('hide');
+    this.setState({resultsShown: true});
   },
 
   render() {
-    let list = this.props.list.map((item) => <ShowListItem item={item} key={item.id} completeItem={this.props.completeItem} />);
+    let list = this.props.list.map((item) => <ShowListItem item={item} key={item.id} completeItem={this.props.completeItem} resultsShown={this.state.resultsShown} />);
     let numberCompleted = this.props.list.filter((item) => item.completed).length
     return (
       <div id='showList' className='hide'>
@@ -18,9 +23,12 @@ let ShowList = React.createClass({
         <ul className='text-center'>
           {list}
         </ul>
-        <button id='done-button' onClick={this.displayResults}>Done with List</button>
-        <div id='results' className='hide'>{numberCompleted}/{this.props.list.length}</div>
-        {/*<Results className='hide' total={this.props.list.length} completed={} />*/}
+        <div className='text-center'>
+          <button id='done-button' onClick={this.displayResults}>Done with List</button>
+        </div>
+        <div id='results' className='hide text-center results'>
+          {numberCompleted}/{this.props.list.length}
+        </div>
       </div>
     );
   }
