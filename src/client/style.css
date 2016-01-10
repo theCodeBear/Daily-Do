@@ -1,0 +1,16 @@
+ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.show {
+  display: block;
+}
+
+.hide {
+  display: none;
+}
+
+.text-center {
+  text-align: center;
+}

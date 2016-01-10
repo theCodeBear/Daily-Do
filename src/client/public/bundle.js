@@ -55,13 +55,19 @@
 	
 	var _reactDom = __webpack_require__(/*! react-dom */ 158);
 	
+	var _createList = __webpack_require__(/*! ./createList.jsx */ 159);
+	
+	var _createList2 = _interopRequireDefault(_createList);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	(0, _reactDom.render)(_react2.default.createElement(_createList2.default, null), document.getElementById('createList'));
 	
 	(0, _reactDom.render)(_react2.default.createElement(
 	  'h1',
-	  null,
-	  ' Hello Daily Do '
-	), document.getElementById('app'));
+	  { className: 'hide' },
+	  '  Show List '
+	), document.getElementById('showList'));
 
 /***/ },
 /* 1 */
@@ -20131,6 +20137,181 @@
 	
 	module.exports = __webpack_require__(/*! react/lib/ReactDOM */ 3);
 
+
+/***/ },
+/* 159 */
+/*!***************************************!*\
+  !*** ./src/client/app/createList.jsx ***!
+  \***************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _itemInput = __webpack_require__(/*! ./itemInput.jsx */ 160);
+	
+	var _itemInput2 = _interopRequireDefault(_itemInput);
+	
+	var _incompleteList = __webpack_require__(/*! ./incompleteList.jsx */ 161);
+	
+	var _incompleteList2 = _interopRequireDefault(_incompleteList);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var CreateList = _react2.default.createClass({
+	  displayName: 'CreateList',
+	  getInitialState: function getInitialState() {
+	    return { list: [], id: 0 };
+	  },
+	  addToList: function addToList(item) {
+	    this.setState({ list: this.state.list.concat({ item: item, id: this.state.id }), id: this.state.id + 1 });
+	  },
+	  render: function render() {
+	    return _react2.default.createElement(
+	      'div',
+	      null,
+	      _react2.default.createElement(
+	        'h1',
+	        { className: 'text-center' },
+	        ' Create List '
+	      ),
+	      _react2.default.createElement(_itemInput2.default, { addToList: this.addToList }),
+	      _react2.default.createElement(_incompleteList2.default, { list: this.state.list }),
+	      _react2.default.createElement(
+	        'div',
+	        { className: 'text-center' },
+	        _react2.default.createElement(
+	          'button',
+	          null,
+	          'Complete List'
+	        )
+	      )
+	    );
+	  }
+	});
+	
+	exports.default = CreateList;
+
+/***/ },
+/* 160 */
+/*!**************************************!*\
+  !*** ./src/client/app/itemInput.jsx ***!
+  \**************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var ItemInput = _react2.default.createClass({
+	  displayName: 'ItemInput',
+	  getInitialState: function getInitialState() {
+	    return { item: '' };
+	  },
+	  submitHandler: function submitHandler(e) {
+	    e.preventDefault();
+	    this.props.addToList(this.state.item);
+	    this.setState({ item: '' });
+	  },
+	  inputChangeHandler: function inputChangeHandler(e) {
+	    this.setState({ item: e.target.value });
+	  },
+	  render: function render() {
+	    return _react2.default.createElement(
+	      'form',
+	      { className: 'text-center', onSubmit: this.submitHandler },
+	      _react2.default.createElement('input', { type: 'text', value: this.state.item, placeholder: 'To do...', onChange: this.inputChangeHandler, autoFocus: true })
+	    );
+	  }
+	});
+	
+	exports.default = ItemInput;
+
+/***/ },
+/* 161 */
+/*!*******************************************!*\
+  !*** ./src/client/app/incompleteList.jsx ***!
+  \*******************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _incompleteListItem = __webpack_require__(/*! ./incompleteListItem.jsx */ 162);
+	
+	var _incompleteListItem2 = _interopRequireDefault(_incompleteListItem);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var IncompleteList = _react2.default.createClass({
+	  displayName: 'IncompleteList',
+	  render: function render() {
+	    var list = this.props.list.map(function (item) {
+	      return _react2.default.createElement(_incompleteListItem2.default, { item: item.item, key: item.id });
+	    });
+	    return _react2.default.createElement(
+	      'ul',
+	      null,
+	      list
+	    );
+	  }
+	});
+	
+	exports.default = IncompleteList;
+
+/***/ },
+/* 162 */
+/*!***********************************************!*\
+  !*** ./src/client/app/incompleteListItem.jsx ***!
+  \***********************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var IncompleteListItem = _react2.default.createClass({
+	  displayName: 'IncompleteListItem',
+	  render: function render() {
+	    return _react2.default.createElement(
+	      'li',
+	      { className: 'incomplete-list-item' },
+	      this.props.item
+	    );
+	  }
+	});
+	
+	exports.default = IncompleteListItem;
 
 /***/ }
 /******/ ]);

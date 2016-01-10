@@ -1,7 +1,13 @@
 import React from 'react';
 import {render} from 'react-dom';
+import CreateList from './createList.jsx';
 
 render(
-  <h1> Hello Daily Do </h1>,
-  document.getElementById('app')
+  <CreateList />,
+  document.getElementById('createList')
+);
+
+render(
+  <h1 className='hide'>  Show List </h1>,
+  document.getElementById('showList')
 );
