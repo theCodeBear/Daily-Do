@@ -25,7 +25,7 @@ let AppComponent = React.createClass({
 
   doneWithResults() {
     window.localStorage.removeItem('dailyDo');
-    window.localStorage.removeItme('dailyDoDate');
+    window.localStorage.removeItem('dailyDoDate');
     this.setState({date: '', list: []});
   },
 

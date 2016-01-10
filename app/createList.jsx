@@ -24,7 +24,7 @@ let CreateList = React.createClass({
   render() {
     return (
       <div id='createList'>
-        <h1 className='text-center'> Create Todays To-do List </h1>
+        <header className='text-center'> Create Todays To-do List </header>
         <ItemInput addToList={this.addToList} />
         <div className='text-center'>
           <button className='create-list-button' onClick={this.completeList}>Complete List</button>

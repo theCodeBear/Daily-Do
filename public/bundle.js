@@ -91,7 +91,7 @@
 	  },
 	  doneWithResults: function doneWithResults() {
 	    window.localStorage.removeItem('dailyDo');
-	    window.localStorage.removeItme('dailyDoDate');
+	    window.localStorage.removeItem('dailyDoDate');
 	    this.setState({ date: '', list: [] });
 	  },
 	  render: function render() {
@@ -33405,7 +33405,7 @@
 	      'div',
 	      { id: 'createList' },
 	      _react2.default.createElement(
-	        'h1',
+	        'header',
 	        { className: 'text-center' },
 	        ' Create Todays To-do List '
 	      ),
@@ -33581,12 +33581,12 @@
 	    var numberCompleted = this.props.list.filter(function (item) {
 	      return item.completed;
 	    }).length;
-	    var doneButton = (0, _classnames2.default)({ 'text-center': true, 'hide': !this.props.dayIsOver });
+	    var doneButtonContainer = (0, _classnames2.default)({ 'text-center': true, 'hide': !this.props.dayIsOver });
 	    return _react2.default.createElement(
 	      'div',
 	      { id: 'showList' },
 	      _react2.default.createElement(
-	        'h1',
+	        'header',
 	        { className: 'text-center' },
 	        ' Todays To-do List '
 	      ),
@@ -33597,7 +33597,7 @@
 	      ),
 	      _react2.default.createElement(
 	        'div',
-	        { className: doneButton },
+	        { className: doneButtonContainer },
 	        _react2.default.createElement(
 	          'button',
 	          { id: 'done-button', onClick: this.props.doneWithResults },
@@ -33653,7 +33653,7 @@
 	    var checkedClass = (0, _classnames2.default)({
 	      'checked-button': !this.props.item.completed,
 	      'checked-button-active': !this.props.item.completed && !this.props.dayIsOver,
-	      'white-color': this.props.item.completed
+	      'checked-button-inactive': this.props.item.completed
 	    });
 	    return _react2.default.createElement(
 	      'li',
