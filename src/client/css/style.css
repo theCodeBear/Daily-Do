@@ -7,6 +7,26 @@ input, button {
   outline: none;
 }
 
+header {
+  font-size: 2em;
+}
+
+button {
+  font-size: 2em;
+  font-weight: 100;
+  padding: 10px;
+  border: 1px solid black;
+  background-color: white;
+  border-radius: 10px;
+  color: blue;
+  margin-top: 20px;
+}
+
+button:hover {
+  background-color: blue;
+  color: white;
+}
+
 .hide {
   display: none;
 }
@@ -25,22 +45,7 @@ input, button {
   text-align: center;
   border: none;
   border-bottom: 1px solid black;
-}
-
-.create-list-button {
-  font-size: 2em;
-  font-weight: 100;
-  padding: 10px;
-  border: 1px solid black;
-  background-color: white;
-  border-radius: 10px;
-  color: blue;
-  margin-top: 20px;
-}
-
-.create-list-button:hover {
-  background-color: blue;
-  color: white;
+  margin-top: 1em;
 }
 
 .incomplete-list-item {
@@ -48,9 +53,9 @@ input, button {
 }
 
 .show-list-item {
-  font-size: 2em;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  font-size: 2.5em;
+  padding-top: 20px;
+  padding-bottom: 20px;
   border: 1px solid silver;
   margin-bottom: 4px;
   font-family: sans-serif;
@@ -80,7 +85,7 @@ input, button {
   color: black;
 }
 
-.white-color {
+.checked-button-inactive {
   color: white;
   float: right;
   padding-left: 10px;

@@ -16,7 +16,7 @@ let ShowListItem = React.createClass({
     let checkedClass = classNames({
       'checked-button': !this.props.item.completed,
       'checked-button-active': !this.props.item.completed && !this.props.dayIsOver,
-      'white-color': this.props.item.completed
+      'checked-button-inactive': this.props.item.completed
     });
     return (
       <li className={liClass}>
