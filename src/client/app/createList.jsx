@@ -14,20 +14,22 @@ let CreateList = React.createClass({
   },
 
   completeList() {
-    document.getElementById('createList').classList.add('hide');
-    document.getElementById('showList').classList.remove('hide');
-    this.props.showList(this.state.list);
+    if (this.state.list.length) {
+      document.getElementById('createList').classList.add('hide');
+      document.getElementById('showList').classList.remove('hide');
+      this.props.showList(this.state.list);
+    }
   },
 
   render() {
     return (
       <div id='createList'>
-        <h1 className='text-center'> Create List </h1>
+        <h1 className='text-center'> Create Todays To-do List </h1>
         <ItemInput addToList={this.addToList} />
-        <IncompleteList list={this.state.list}/>
         <div className='text-center'>
-          <button onClick={this.completeList}>Complete List</button>
+          <button className='create-list-button' onClick={this.completeList}>Complete List</button>
         </div>
+        <IncompleteList list={this.state.list}/>
       </div>
     );
   }

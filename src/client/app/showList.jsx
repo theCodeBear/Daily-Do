@@ -22,7 +22,7 @@ let ShowList = React.createClass({
     let doneButton = classNames({'text-center': true, 'hide': !this.props.dayIsOver});
     return (
       <div id='showList'>
-        <h1 className='text-center'> Todays List </h1>
+        <h1 className='text-center'> Todays To-do List </h1>
         <ul className='text-center'>
           {list}
         </ul>

@@ -20,7 +20,7 @@ let ItemInput = React.createClass({
   render() {
     return (
       <form className='text-center' onSubmit={this.submitHandler}>
-        <input type='text' value={this.state.item} placeholder='To do...' onChange={this.inputChangeHandler} autoFocus />
+        <input type='text' className='item-input' value={this.state.item} placeholder='To do...' onChange={this.inputChangeHandler} autoFocus />
       </form>
     );
   }
