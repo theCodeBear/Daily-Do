@@ -12,11 +12,17 @@ let AppComponent = React.createClass({
     this.setState({list: list});
   },
 
+  completeItem(itemId) {
+    let tempList = this.state.list;
+    tempList[itemId].completed = true;
+    this.setState({list: tempList});
+  },
+
   render() {
     return (
       <div>
         <CreateList showList={this.showList} />
-        <ShowList list={this.state.list} />
+        <ShowList list={this.state.list} completeItem={this.completeItem} />
       </div>
     );
   }

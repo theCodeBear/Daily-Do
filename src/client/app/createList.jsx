@@ -10,7 +10,7 @@ let CreateList = React.createClass({
   },
 
   addToList(item) {
-    this.setState({list: this.state.list.concat({item: item, id: this.state.id}), id: this.state.id+1});
+    this.setState({list: this.state.list.concat({item: item, id: this.state.id, complete: false}), id: this.state.id+1});
   },
 
   completeList() {

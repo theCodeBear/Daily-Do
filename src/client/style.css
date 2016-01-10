@@ -19,9 +19,9 @@ ul {
   font-size: 2em;
   padding-top: 10px;
   padding-bottom: 10px;
-  /*box-shadow: 0 1px 5px 0px #337;*/
   border: 1px solid silver;
   margin-bottom: 4px;
+  font-weight: 200;
 }
 
 .checked-button {
@@ -38,4 +38,16 @@ ul {
 
 .checked-button:active {
   color: #0A0;
+}
+
+.completed-item {
+  background-color: #0C0;
+  color: black;
+}
+
+.white-color {
+  color: white;
+  float: right;
+  padding-left: 10px;
+  padding-right: 10px;
 }

@@ -10,7 +10,8 @@ let ShowList = React.createClass({
   },
 
   render() {
-    let list = this.props.list.map((item) => <ShowListItem item={item.item} key={item.id} />);
+    let list = this.props.list.map((item) => <ShowListItem item={item} key={item.id} completeItem={this.props.completeItem} />);
+    let numberCompleted = this.props.list.filter((item) => item.completed).length
     return (
       <div id='showList' className='hide'>
         <h1 className='text-center'> Todays List </h1>
@@ -18,7 +19,7 @@ let ShowList = React.createClass({
           {list}
         </ul>
         <button id='done-button' onClick={this.displayResults}>Done with List</button>
-        <div id='results' className='hide'>{this.props.list.length}</div>
+        <div id='results' className='hide'>{numberCompleted}/{this.props.list.length}</div>
         {/*<Results className='hide' total={this.props.list.length} completed={} />*/}
       </div>
     );
