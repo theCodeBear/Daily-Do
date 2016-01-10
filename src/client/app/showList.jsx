@@ -1,6 +1,7 @@
 'use strict';
 
 import React from 'react';
+import classNames from 'classnames';
 import ShowListItem from './showListItem.jsx';
 
 let ShowList = React.createClass({
@@ -8,24 +9,25 @@ let ShowList = React.createClass({
     return { resultsShown: false }
   },
 
-  displayResults() {
-    document.getElementById('done-button').classList.add('hide');
-    document.getElementById('results').classList.remove('hide');
-    this.setState({resultsShown: true});
-    window.localStorage.removeItem('dailyDo');
+  componentWillMount() {
+    if (this.props.dayIsOver) {
+      document.getElementById('results').classList.remove('hide');
+      this.setState({resultsShown: true});
+    }
   },
 
   render() {
     let list = this.props.list.map((item) => <ShowListItem item={item} key={item.id} completeItem={this.props.completeItem} resultsShown={this.state.resultsShown} />);
     let numberCompleted = this.props.list.filter((item) => item.completed).length
+    let doneButton = classNames({'text-center': true, 'hide': !this.props.dayIsOver});
     return (
       <div id='showList'>
         <h1 className='text-center'> Todays List </h1>
         <ul className='text-center'>
           {list}
         </ul>
-        <div className='text-center'>
-          <button id='done-button' onClick={this.displayResults}>Done with List</button>
+        <div className={doneButton}>
+          <button id='done-button' onClick={this.props.doneWithResults}>Make New List</button>
         </div>
         <div id='results' className='hide text-center results'>
           {numberCompleted}/{this.props.list.length}
