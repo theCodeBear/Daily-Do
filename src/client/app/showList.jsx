@@ -5,19 +5,13 @@ import classNames from 'classnames';
 import ShowListItem from './showListItem.jsx';
 
 let ShowList = React.createClass({
-  getInitialState() {
-    return { resultsShown: false }
-  },
-
   componentWillMount() {
-    if (this.props.dayIsOver) {
+    if (this.props.dayIsOver)
       document.getElementById('results').classList.remove('hide');
-      this.setState({resultsShown: true});
-    }
   },
 
   render() {
-    let list = this.props.list.map((item) => <ShowListItem item={item} key={item.id} completeItem={this.props.completeItem} resultsShown={this.state.resultsShown} />);
+    let list = this.props.list.map((item) => <ShowListItem item={item} key={item.id} completeItem={this.props.completeItem} dayIsOver={this.props.dayIsOver} />);
     let numberCompleted = this.props.list.filter((item) => item.completed).length
     let doneButton = classNames({'text-center': true, 'hide': !this.props.dayIsOver});
     return (

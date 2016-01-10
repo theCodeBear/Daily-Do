@@ -15,7 +15,7 @@ let ShowListItem = React.createClass({
     });
     let checkedClass = classNames({
       'checked-button': !this.props.item.completed,
-      'checked-button-active': !this.props.item.completed && !this.props.resultsShown,
+      'checked-button-active': !this.props.item.completed && !this.props.dayIsOver,
       'white-color': this.props.item.completed
     });
     return (
@@ -23,7 +23,7 @@ let ShowListItem = React.createClass({
         <span className='thin'>{this.props.item.item}</span>
         <span id={`check${this.props.item.id}`}
               className={checkedClass}
-              onClick={!this.props.item.completed && !this.props.resultsShown && this.completeItem}>
+              onClick={!this.props.item.completed && !this.props.dayIsOver && this.completeItem}>
           &#x2713;
         </span>
       </li>
