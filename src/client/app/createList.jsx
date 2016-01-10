@@ -14,10 +14,10 @@ let CreateList = React.createClass({
   },
 
   completeList() {
-    console.log(this.state.list.map((item) => item.item));
+    // console.log(this.state.list.map((item) => item.item));
     document.getElementById('createList').classList.add('hide');
     document.getElementById('showList').classList.remove('hide');
-
+    this.props.showList(this.state.list);
   },
 
   render() {
