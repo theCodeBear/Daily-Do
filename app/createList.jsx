@@ -6,18 +6,18 @@ import IncompleteList from './incompleteList.jsx';
 
 let CreateList = React.createClass({
   getInitialState() {
-    return { list: [], id: 0 };
+    return { unsavedList: [], id: 0 };
   },
 
   addToList(item) {
-    this.setState({list: this.state.list.concat({item: item, id: this.state.id, complete: false}), id: this.state.id+1});
+    this.setState({unsavedList: this.state.unsavedList.concat({item: item, id: this.state.id, complete: false}), id: this.state.id+1});
   },
 
   completeList() {
-    if (this.state.list.length) {
+    if (this.state.unsavedList.length) {
       document.getElementById('createList').classList.add('hide');
       document.getElementById('showList').classList.remove('hide');
-      this.props.showList(this.state.list);
+      this.props.showList(this.state.unsavedList);
     }
   },
 
@@ -29,7 +29,7 @@ let CreateList = React.createClass({
         <div className='text-center'>
           <button className='create-list-button' onClick={this.completeList}>Complete List</button>
         </div>
-        <IncompleteList list={this.state.list}/>
+        <IncompleteList list={this.state.unsavedList}/>
       </div>
     );
   }
