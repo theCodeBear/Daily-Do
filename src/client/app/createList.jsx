@@ -13,14 +13,21 @@ let CreateList = React.createClass({
     this.setState({list: this.state.list.concat({item: item, id: this.state.id}), id: this.state.id+1});
   },
 
+  completeList() {
+    console.log(this.state.list.map((item) => item.item));
+    document.getElementById('createList').classList.add('hide');
+    document.getElementById('showList').classList.remove('hide');
+
+  },
+
   render() {
     return (
-      <div>
+      <div id='createList'>
         <h1 className='text-center'> Create List </h1>
         <ItemInput addToList={this.addToList} />
         <IncompleteList list={this.state.list}/>
         <div className='text-center'>
-          <button>Complete List</button>
+          <button onClick={this.completeList}>Complete List</button>
         </div>
       </div>
     );
