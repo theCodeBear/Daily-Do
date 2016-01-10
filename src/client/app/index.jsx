@@ -1,6 +1,7 @@
 import React from 'react';
 import {render} from 'react-dom';
 import CreateList from './createList.jsx';
+import ShowList from './showList.jsx';
 
 let AppComponent = React.createClass({
   getInitialState() {
@@ -15,7 +16,7 @@ let AppComponent = React.createClass({
     return (
       <div>
         <CreateList showList={this.showList} />
-        <h1 id='showList' className='hide'> Show List </h1>
+        <ShowList list={this.state.list} />
       </div>
     );
   }
