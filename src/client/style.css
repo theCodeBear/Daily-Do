@@ -14,3 +14,28 @@ ul {
 .incomplete-list-item {
   font-size: 2em;
 }
+
+.show-list-item {
+  font-size: 2em;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  /*box-shadow: 0 1px 5px 0px #337;*/
+  border: 1px solid silver;
+  margin-bottom: 4px;
+}
+
+.checked-button {
+  float: right;
+  color: steelblue;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.checked-button:hover {
+  cursor: pointer;
+  color: #0F0;
+}
+
+.checked-button:active {
+  color: #0A0;
+}
